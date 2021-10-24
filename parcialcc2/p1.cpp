@@ -20,7 +20,8 @@ while(numfilas < MatTam){
         numpos++;
         prev++;	
 	}
-        *s=1;	
+        *s=1;
+    	cout<<"imprimir cada que termine una fila ";	
      //primera posicion de s la pongo en 1    
   numfilas++;
   prev=*Mat; 
