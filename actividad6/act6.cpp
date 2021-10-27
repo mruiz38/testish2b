@@ -6,8 +6,8 @@
 using namespace std;
 
 
-int sumaMedianaVector( int *mv, int dimension ){
-    
+int sumaMedianaVector( int *mv, int dim1 ){
+    int dimension=dim1;
     if(!(dimension%2))   
 	    return *(mv + dimension/2) + *(mv +  ( (dimension/2)-1) );
     
@@ -18,7 +18,8 @@ int sumaMedianaVector( int *mv, int dimension ){
 }
 
 
-int sumaMedianaMatriz( int *p, int dim1, int dim2  ){
+int sumaMedianaMatriz( int *p, int dim1 ){
+int dim2=dim1;
 int sumaElementos=0; 
 int *q=p;
 int *r=p;
@@ -28,8 +29,7 @@ while(q < p  + (dim1 * dim2 )  ){
         cuentaPos++;	
 	while( q < r + (dim2)){                
 	 q++;
-        }
-     //cout<<"\n";
+        }     
      r = r + dim2;
 
 }
@@ -65,7 +65,21 @@ float calcularArea(PF pf,float a, float b) {
   return area;
 }
 
+typedef int(*PF2)( int *, int);
+int calcularMedianas(PF2 pf2x, int *pt, int dim){
+   int sumaMedi = pf2x( pt, dim);
+   return sumaMedi;
+	   
+}
 int main() {
+  PF2 PuntFun2[2]={sumaMedianaVector,sumaMedianaMatriz};
+  PF2* ppff2 = PuntFun2;
+  int vectorMedianas[4][10]={
+	  {10,20,30,40,50,60,70,80,90,100},
+	  {1,2,3,4,5,6,7,8,9,10},
+	  {2,2,3,3,4,4,5,5,6,6},
+	  {7,7,6,6,5,5,4,4,3,3}
+  };
 
   /*	
   PF PuntFun[4] = {rectangulo,circulo,triangulo,cuadrado};
@@ -87,7 +101,7 @@ int main() {
 
   int medianapar[10]={10,20,30,40,50,60,70,80,90,100};
   int medianaimp[3]={1,2,3};
-
+   
   int matriz[4][4]={
 	  {1,2,3,4},
 	  {4,6,2,1},
@@ -95,8 +109,17 @@ int main() {
 	  {4,3,2,1}
   };
 
+  int op[2]={0,1};
+  int *pop = op; 
+  int (*p)
+   
+  for (int i =0; i<2; i++){
+    
+     calcularMedianas( (*( ppff2 + *pop  )) ,       );
+  }
 
-cout<<"sumaMedianaMatriz : "<<sumaMedianaMatriz( matriz[0],4,4  )<<" "<<endl;  
+
+//cout<<"sumaMedianaMatriz : "<<sumaMedianaMatriz( matriz[0],4,4  )<<" "<<endl;  
   
   
 
