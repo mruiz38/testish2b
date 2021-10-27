@@ -6,7 +6,7 @@
 using namespace std;
 
 
-int medianaVector( int *mv, int dimension ){
+int sumaMedianaVector( int *mv, int dimension ){
     
     if(!(dimension%2))   
 	    return *(mv + dimension/2) + *(mv +  ( (dimension/2)-1) );
@@ -16,6 +16,29 @@ int medianaVector( int *mv, int dimension ){
 
 
 }
+
+
+int sumaMedianaMatriz( int *p, int dim1, int dim2  ){
+int sumaElementos=0; 
+int *q=p;
+int *r=p;
+int cuentaPos=0;
+while(q < p  + (dim1 * dim2 )  ){
+        sumaElementos+=*(q+cuentaPos);
+        cuentaPos++;	
+	while( q < r + (dim2)){                
+	 q++;
+        }
+     //cout<<"\n";
+     r = r + dim2;
+
+}
+	
+ return sumaElementos;
+}
+
+
+
 
 float rectangulo(float base, float altura) {
 	cout << "El area del rectangulo es: " << base * altura << endl;
@@ -65,9 +88,22 @@ int main() {
   int medianapar[10]={10,20,30,40,50,60,70,80,90,100};
   int medianaimp[3]={1,2,3};
 
+  int matriz[4][4]={
+	  {1,2,3,4},
+	  {4,6,2,1},
+	  {1,2,4,4},
+	  {4,3,2,1}
+  };
+
+
+cout<<"sumaMedianaMatriz : "<<sumaMedianaMatriz( matriz[0],4,4  )<<" "<<endl;  
+  
+  
+
+  
   //cout<<"imprimo el valor de mediana, antes de enviarlo "<<mediana<<endl;; 
-  cout<<"resultado"<<medianaVector(medianapar,10)<<endl; 
-  cout<<"resultado mediana impar"<<medianaVector(medianaimp,3)<<endl;
+  //cout<<"resultado"<<sumaMedianaVector(medianapar,10)<<endl; 
+  //cout<<"resultado mediana impar"<<sumaMedianaVector(medianaimp,3)<<endl;
   
 
 
